@@ -1,0 +1,105 @@
+footer {
+  /* padding-top: 10rem; */
+}
+footer .content {
+  background-color: #cbe3d9;
+  padding-top: 4rem;
+  min-height: 50vh;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-bottom: 2rem;
+  width: 100%;
+}
+footer .content-top {
+  display: flex;
+  justify-content: space-around;
+}
+footer .content-top h2 {
+  color: #327a6d;
+  padding-bottom: 3rem;
+}
+footer .content-top .nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+footer .content-top .nav a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1rem;
+  padding-bottom: 2rem;
+  width: fit-content;
+}
+footer .content-top .nav a:hover {
+  text-decoration: underline;
+  height: fit-content;
+  color: #327a6d;
+}
+
+footer aside {
+  color: #327a6d;
+}
+footer aside div p {
+  font-size: 0.9rem;
+  color: #000;
+}
+
+footer aside div img {
+  background-color: #fff;
+  width: 130px;
+  margin-bottom: 1.4rem;
+}
+
+footer aside div i {
+  color: #000;
+  font-size: 14px;
+}
+
+footer aside div .bi-geo-alt-fill {
+  margin-top: 2px;
+}
+
+footer .content hr {
+  color: #000;
+}
+footer .content .content-bottom {
+  text-align: end;
+}
+footer .content .content-bottom .tag {
+  text-decoration: none;
+  color: #000;
+  font-size: 0.9rem;
+}
+footer .content .content-bottom .tag:hover {
+  color: #327a6d;
+  transition: 0.3s;
+}
+
+@media (min-width: 600px) and (max-width: 1080px) {
+  footer .content .content-bottom .tag {
+    font-size: 0.8rem;
+  }
+  footer .content .content-top {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 580px) {
+  footer .content .content-top {
+    flex-wrap: wrap;
+    gap: 4rem;
+  }
+
+  aside h2 {
+    text-align: center;
+  }
+
+  aside div .inner-aside {
+    justify-content: center;
+    align-items: center;
+  }
+  footer .content .content-bottom .tag {
+    font-size: 0.7rem;
+  }
+}

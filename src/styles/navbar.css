@@ -1,0 +1,75 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  transition: transform 0.3s ease;
+  padding: 0.8rem 11rem;
+  background-color: #fff;
+  border-bottom: 2px solid #ffe6c7;
+}
+
+/* .navbar .container-fluid img {
+  width: 50px;
+} */
+
+.navbar .container-fluid .navbar-txt-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-fluid button {
+  border: none;
+}
+
+.container-fluid .navbar-nav {
+  gap: 0.9rem;
+}
+
+.nav-link {
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #000;
+}
+
+.navbar-collapse {
+  display: none;
+  transition: display 0.3s ease;
+}
+
+.navbar-collapse.active {
+  display: block;
+}
+
+.navbar-toggler {
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  color: #ffa559;
+}
+
+@media (min-width: 600px) and (max-width: 1080px) {
+  .navbar {
+    padding: 0.8rem;
+  }
+  .navbar .container-fluid .navbar-collapse {
+    padding: 1rem 0rem 0rem 0rem;
+  }
+  .container-fluid .navbar-collapse .navbar-nav {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 580px) {
+  header .navbar {
+    padding: 0.8rem 0.5rem;
+  }
+
+  .navbar .container-fluid .navbar-collapse {
+    padding: 1rem 0rem 0rem 0rem;
+  }
+  .container-fluid .navbar-collapse .navbar-nav {
+    gap: 1rem;
+  }
+}

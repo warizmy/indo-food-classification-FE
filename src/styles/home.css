@@ -1,0 +1,14 @@
+.home-page {
+  min-height: 100vh;
+  /* background-color: bisque; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-page .btn{
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
