@@ -1,14 +1,27 @@
-.home-page {
-  min-height: 100vh;
-  /* background-color: bisque; */
+.hero {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
+  flex-direction: column;
   justify-content: center;
 }
 
-.home-page .btn{
+.hero .inner-hero {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("../assets/256012613_25ffd818-5f24-4eac-aab6-b6e15e5c678d.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  
+}
+
+.inner-hero .btn {
   padding: 10px 15px;
   font-size: 14px;
   font-weight: 500;
   color: #fff;
+}
+
+.section-1 {
+
 }
