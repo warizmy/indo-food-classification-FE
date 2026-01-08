@@ -3,10 +3,11 @@ class Navbar {
     const header = document.createElement('header');
     header.innerHTML = `
     <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
+      <div class="container-fluid d-flex align-items-center justify-content-around">
         <a href="/#" class="d-flex align-items-center justify-content-center gap-3" style="text-decoration: none;">
           <div class="navbar-txt-header">
-              <div id="navbarBrand" class="navbar-brand d-flex flex-row fs-5 fw-semibold">IndoFood.<span class="text-warning">ai</span>
+              <div id="navbarBrand" class="navbar-brand d-flex flex-row fs-5 fw-semibold">
+                IndoFood.<span class="text-warning">ai</span>
               </div>
           </div>
         </a>

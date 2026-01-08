@@ -1,18 +1,14 @@
 .hero {
-  display: flex;
-  /* align-items: center; */
-  flex-direction: column;
-  justify-content: center;
+  width: 100%;
 }
 
 .hero .inner-hero {
   width: 100%;
   min-height: 100vh;
-  background-image: url("../assets/256012613_25ffd818-5f24-4eac-aab6-b6e15e5c678d.jpg");
+  background-image: url("../assets/hero-bg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 100%;
-  
+  background-size: cover;
 }
 
 .inner-hero .btn {
@@ -23,5 +19,17 @@
 }
 
 .section-1 {
+  width: 70%;
+}
 
+.card {
+  background-color: #fff;
+  border-bottom: 3px solid #ffa559;
+  padding: 1rem 1rem 0.1rem 1rem;
+  margin: 0;
+  width: 100%;
+}
+
+.card p {
+  font-size: 14px;
 }
