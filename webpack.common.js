@@ -33,43 +33,20 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env'],
-            },
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
           },
-        ],
+        },
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: 'index.html',
       template: path.resolve(__dirname, 'src/templates/index.html'),
       favicon: path.resolve(__dirname, 'src/public/logo.svg'),
       inject: 'body',
-      headTags: [
-        {
-          tag: 'link',
-          attributes: {
-            rel: 'preload',
-            href: 'https://fonts.gstatic.com',
-            as: 'font',
-            type: 'font/woff2',
-            crossorigin: 'anonymous',
-          },
-        },
-        {
-          tag: 'link',
-          attributes: {
-            rel: 'preload',
-            href: 'src/styles/main.css',
-            as: 'style',
-          },
-        },
-      ],
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -80,7 +57,7 @@ module.exports = {
       ],
     }),
     new MiniCssExtractPlugin({
-      filename: 'styles/[name].[contenthash].css', // Menghasilkan file CSS dengan hashing
+      filename: 'styles/[name].[contenthash].css',
     }),
   ],
 };

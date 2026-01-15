@@ -4,7 +4,7 @@ import 'quill/dist/quill.snow.css';
 import '../styles/main.css';
 import Main from './app';
 import LoadingCircle from './utils/loading';
-import Navbar from './view/component/navbar';
+import setActiveNavbar from './utils/navbarActive';
 
 const app = new Main({
   content: document.querySelector('#mainContent'),
@@ -15,19 +15,21 @@ const app = new Main({
 const loadingBar = new LoadingCircle();
 
 window.addEventListener('load', () => {
+  if (!window.location.hash) {
+    window.location.hash = '#/';
+  }
+
   loadingBar.show();
 
   setTimeout(() => {
     app.renderPage();
+    setActiveNavbar();
     loadingBar.hide();
   }, 500);
 });
 
 window.addEventListener('hashchange', () => {
   app.renderPage();
+  setActiveNavbar();
   window.scrollTo(0, 0);
 });
-
-// eslint-disable-next-line no-new
-const navbarToggle = new Navbar();
-navbarToggle.initialize();

@@ -1,8 +1,7 @@
 import routes from './routes/routes';
-import UrlParser from './routes/url-parser';
+import UrlParser from './routes/urlParser';
 import Footer from './view/component/footer';
 import Navbar from './view/component/navbar';
-// import Home from './view/pages/home';
 
 class Main {
   constructor({ content, loadingContainer, mainContentWrapper }) {
@@ -14,13 +13,20 @@ class Main {
   }
 
   InitialAppShell() {
-    const navbar = new Navbar().render();
+    this._navbar = new Navbar();
+
+    const navbarElement = this._navbar.render();
     const footer = new Footer().render();
 
     if (this._mainContentWrapper && this._mainContentWrapper.parentNode) {
-      this._mainContentWrapper.parentNode.insertBefore(navbar, this._mainContentWrapper);
-      this._mainContentWrapper.parentNode.appendChild(footer); // Cara lebih aman
+      this._mainContentWrapper.parentNode.insertBefore(
+        navbarElement,
+        this._mainContentWrapper,
+      );
+      this._mainContentWrapper.parentNode.appendChild(footer);
     }
+
+    this._navbar.initialize();
   }
 
   async renderPage() {

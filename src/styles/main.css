@@ -66,3 +66,13 @@
     border-radius: 5px;
   }
 }
+
+.nav-link {
+  transition: color 0.25s ease;
+}
+
+.nav-link:hover,
+.nav-link.active,
+.nav-link[aria-current="page"] {
+  color: #ffa559 !important;
+}
