@@ -40,22 +40,62 @@
   height: 100%;
 }
 
-.section-2{
+.section-2 {
   width: 70%;
 }
 
-#faq a{
+#faq a {
   color: #000;
   text-decoration: none;
   font-size: 16px;
 }
 
-#faq a:hover{
+#faq a:hover {
   text-decoration: underline;
 }
 
-#faq p{
+#faq p {
   font-size: 14px;
   padding: none;
   margin: 0;
+}
+
+@media (max-width: 890px) {
+  .hero .inner-hero {
+    padding: 0 2.5em;
+  }
+  .section-1 div {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 580px) {
+  html {
+    font-size: 90%;
+  }
+
+  .hero .inner-hero {
+    padding: 0 1.5em;
+  }
+  .inner-hero .btn {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .section-1,
+  .section-2 {
+    width: 100%;
+    padding: 2em;
+  }
+
+  .section-1 div {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 390px) {
+  .inner-hero .btn {
+    padding: 10px;
+    font-size: 10px;
+  }
 }

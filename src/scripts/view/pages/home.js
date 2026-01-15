@@ -13,8 +13,8 @@ class Home {
     const homePage = document.createElement('section');
     homePage.className = 'hero';
     homePage.innerHTML = `
-        <div class="inner-hero d-flex flex-column gap-1 align-items-center justify-content-center">
-          <div class="container-app text-center">
+        <div class="inner-hero d-flex align-items-center justify-content-center">
+          <div class="container-app text-center d-flex flex-column gap-2">
             <h1 class="fw-bold fs-1">Kenali Masakan Indonesia dengan Sekali Foto</h1>
             <p class="text-secondary">Teknologi AI yang membantu Anda mengidentifikasi hidangan nusantara dan memberikan resep autentik seketika</p>
             <div class="d-flex flex-row gap-3 align-items-center justify-content-center">
@@ -26,13 +26,13 @@ class Home {
 
         <section class="d-flex my-4 py-4 flex-column align-items-center jusify-content-center"> 
           <div class="section-1">
-          <div class="py-3">
-            <h4 class="text-start fw-bold m-0">Cara Kerja
-              <span class="text-warning">IndoFood.ai<span class="text-black">?</span>
-              </span>
-            </h4>
-            <p class="text-secondary fs-6">Cek Makanan Dengan tiga Langkah</p>
-          </div>
+            <div class="py-3">
+              <h4 class="text-start fw-bold m-0">Cara Kerja
+                <span class="text-warning">IndoFood.ai<span class="text-black">?</span>
+                </span>
+              </h4>
+              <p class="text-secondary fs-6">Cek Makanan Dengan tiga Langkah</p>
+            </div>
             <div class="d-flex flex-row gap-4 align-items-center justify-content-between">
               <span class="card d-flex flex-column align-items-start justify-content-center">
                 <img src="${uploadIcon}" alt="upload">

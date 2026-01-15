@@ -8,6 +8,12 @@
   padding: 0.8rem 0;
 }
 
+.navbar .container-fluid {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 .container-fluid button {
   border: none;
 }
@@ -51,9 +57,17 @@
   }
 }
 
+@media (max-width: 890px) {
+  .navbar .container-fluid {
+    justify-content: space-between;
+    padding: 0 2.5em;
+  }
+}
+
 @media (max-width: 580px) {
-  header .navbar {
-    padding: 0.8rem 0.5rem;
+  .navbar .container-fluid {
+    justify-content: space-between;
+    padding: 0 2em;
   }
 
   .navbar .container-fluid .navbar-collapse {
