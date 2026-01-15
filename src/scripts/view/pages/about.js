@@ -1,0 +1,74 @@
+class About {
+  _render() {
+    const section = document.createElement('section');
+    section.innerHTML = `
+     <div class="container">
+          <div class="inner-container d-flex flex-column justify-content-center gap-3">
+               <div class="mt-5">
+                    <h1 class="fw-bolder text-start">Bagaimana IndoFood.<span class="text-warning">ai</span> Bekerja?</h1>
+                    <p class="text-muted fs-5 text-start">
+                         Kami menggabungkan kekuatan Computer Vision dan Generative AI untuk menghadirkan pengalaman kuliner yang cerdas
+                    </p>
+               </div>
+               <div class="d-flex gap-4 flex-row w-100 align-items-center justify-content-center"> 
+                    <div class="card p-4 d-flex flex-column gap-1 align-items-start">
+                         <div class="text-warning">
+                              <i class="bi bi-eye-fill fs-1"></i>
+                         </div>
+                         <h4 class="fw-bold">Computer Vision</h4>
+                         <h6 class="text-muted mb-3 small">MobileNetV2 Architecture</h6>
+                         <p class="card-text text-secondary text-start">
+                              Model ini telah dilatih menggunakan ribuan data gambar masakan Indonesia. MobileNetV2 dipilih karena kemampuannya yang efisien dalam mengenali pola visual (warna, tekstur, bentuk) secara cepat tanpa membebani performa server.
+                         </p>
+                    </div>
+                    <div class="card p-4 d-flex flex-column gap-1 align-items-start">
+                         <div class="text-warning">
+                              <i class="bi bi-cpu-fill fs-1"></i>
+                         </div>
+                         <h4 class="fw-bold">Generative AI</h4>
+                         <h6 class="text-muted mb-3 small">Google Gemini Pro</h6>
+                         <p class="card-text text-secondary">
+                              Setelah identifikasi berhasil, nama makanan dikirim ke Gemini AI. Sebagai model bahasa besar (LLM) tercanggih, Gemini merangkai resep autentik yang mencakup instruksi langkah-demi-langkah dan tips koki untuk Anda.
+                         </p>
+                    </div>
+               </div>
+          </div>
+          <div class="pb-4">
+               <h3 class="fw-bold text-center">Alur Proses Identifikasi</h3>
+               <div class="d-flex flex-row gap-5 py-4">
+                    <div class="flow-card d-flex flex-column gap-1 align-items-center py-3 px-2 rounded-4">
+                         <h2 class="text-warning fw-bold">01</h2>
+                         <p class="fw-bold mb-1">Pre-processing</p>
+                         <small class="text-muted text-center">
+                              Gambar disesuaikan ke resolusi 224x224 px.
+                         </small>
+                    </div>
+                    <div class="flow-card d-flex flex-column gap-2 align-items-center py-3 px-2 rounded-4">
+                         <h2 class="text-warning fw-bold">02</h2>
+                         <p class="fw-bold mb-1">Feature Extraction</p>
+                         <small class="text-muted text-center">
+                              AI mencari pola unik dalam bumbu dan tekstur.
+                         </small>
+                    </div>
+                    <div class="flow-card d-flex flex-column gap-2 align-items-center py-3 px-2 rounded-4">
+                         <h2 class="text-warning fw-bold">03</h2>
+                         <p class="fw-bold mb-1">Classification</p>
+                         <small class="text-muted text-center">
+                              Mencocokkan data dengan 13 kategori makanan.
+                         </small>
+                    </div>
+                    <div class="flow-card d-flex flex-column gap-2 align-items-center py-3 px-2 rounded-4">
+                         <h2 class="text-warning fw-bold">04</h2>
+                         <p class="fw-bold mb-1">Recipe Crafting</p>
+                         <small class="text-muted text-center">
+                              Gemini AI menyusun resep secara real-time.
+                         </small>
+                    </div>
+               </div>
+          </div>
+     </div>`;
+    return section;
+  }
+}
+
+export default About;

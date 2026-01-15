@@ -1,0 +1,13 @@
+section .container {
+  max-width: 70%;
+}
+
+.container .inner-container {
+  height: 100vh;
+}
+
+.flow-card:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  transform: scale(1.02);
+  transition: 0.3s ease-in;
+}
