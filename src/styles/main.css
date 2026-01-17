@@ -3,6 +3,9 @@
 @import "home.css";
 @import "footer.css";
 @import "about.css";
+@import "menu.css";
+
+
 * {
   margin: 0;
   padding: 0;

@@ -28,8 +28,12 @@ window.addEventListener('load', () => {
   }, 500);
 });
 
-window.addEventListener('hashchange', () => {
-  app.renderPage();
+window.addEventListener('hashchange', async () => {
+  loadingBar.show();
+
+  await app.renderPage();
   setActiveNavbar();
   window.scrollTo(0, 0);
+
+  loadingBar.hide();
 });
