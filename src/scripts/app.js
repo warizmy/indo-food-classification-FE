@@ -37,7 +37,7 @@ class Main {
       const page = new Page();
       this._content.innerHTML = '';
       this._content.appendChild(await page._render());
-      if (typeof page._intializeEvent === 'function') {
+      if (typeof page._initializeEvent === 'function') {
         page._initializeEvent();
       }
     } else {
