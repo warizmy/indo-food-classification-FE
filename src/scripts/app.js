@@ -38,7 +38,7 @@ class Main {
       this._content.innerHTML = '';
       this._content.appendChild(await page._render());
       if (typeof page._intializeEvent === 'function') {
-        page._intializeEvent();
+        page._initializeEvent();
       }
     } else {
       this._content.innerHTML = '<h1>404 - Halaman Tidak Ditemukan</h1>';

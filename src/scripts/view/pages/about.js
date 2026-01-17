@@ -3,14 +3,14 @@ class About {
     const section = document.createElement('section');
     section.innerHTML = `
      <div class="container">
-          <div class="inner-container d-flex flex-column justify-content-center gap-3">
+          <div class="inner-container py-5 my-5 d-flex flex-column justify-content-center gap-3">
                <div class="mt-5">
-                    <h1 class="fw-bolder text-start">Bagaimana IndoFood.<span class="text-warning">ai</span> Bekerja?</h1>
-                    <p class="text-muted fs-5 text-start">
+                    <h1 class="fw-bolder text-center">Bagaimana IndoFood.<span class="text-warning">ai</span> Bekerja?</h1>
+                    <p class="text-muted fs-5 text-center">
                          Kami menggabungkan kekuatan Computer Vision dan Generative AI untuk menghadirkan pengalaman kuliner yang cerdas
                     </p>
                </div>
-               <div class="d-flex gap-4 flex-row w-100 align-items-center justify-content-center"> 
+               <div class="card-container w-100"> 
                     <div class="card p-4 d-flex flex-column gap-1 align-items-start">
                          <div class="text-warning">
                               <i class="bi bi-eye-fill fs-1"></i>
@@ -34,8 +34,9 @@ class About {
                </div>
           </div>
           <div class="pb-4">
-               <h3 class="fw-bold text-center">Alur Proses Identifikasi</h3>
-               <div class="d-flex flex-row gap-5 py-4">
+               <h3 class="fw-bold text-start">Alur Proses Identifikasi</h3>
+               <hr>
+               <div class="flow-container gap-5 py-4">
                     <div class="flow-card d-flex flex-column gap-1 align-items-center py-3 px-2 rounded-4">
                          <h2 class="text-warning fw-bold">01</h2>
                          <p class="fw-bold mb-1">Pre-processing</p>
@@ -64,6 +65,15 @@ class About {
                               Gemini AI menyusun resep secara real-time.
                          </small>
                     </div>
+               </div>
+          </div>
+          <div class="py-5 d-flex flex-column">
+               <div class="bg-body-tertiary px-3 py-2 border-start border-warning border-5 rounded-10">
+                    <h4 class="fw-semibold">Catatan Akurasi</h4>
+                    <p class="text-secondary">
+                         Akurasi klasifikasi sangat bergantung pada kualitas pencahayaan dan fokus objek. Saat ini, model kami dikhususkan untuk 13 hidangan populer Indonesia.
+                         Resep yang dihasilkan AI disarankan untuk ditinjau kemabli sesuai selera masing-masing. 
+                    </p>
                </div>
           </div>
      </div>`;

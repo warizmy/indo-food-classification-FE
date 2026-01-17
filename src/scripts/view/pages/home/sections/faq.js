@@ -16,9 +16,9 @@ class FaqSection {
           <div class="py-4 w-100">
             <div id="faq" class="d-flex flex-column gap-3 align-items-start justify-content-center">
               <div class="border-bottom w-100 d-flex flex-column gap-3 pb-3">
-                <a data-bs-toggle="collapse" href="#q1">
+                <button class="btn p-0 text-start" data-bs-toggle="collapse" data-bs-target="#q1" aria-expanded="false" aria-controls="q1">
                     Apakah aplikasi ini bisa mengenali semua makanan?
-                </a>
+                </button>
                 <div id="q1" class="collapse" data-bs-parent="#faq">
                     <p>
                         Untuk saat ini, AI kami fokus pada 
@@ -30,9 +30,9 @@ class FaqSection {
                 </div>
               </div>
               <div class="border-bottom w-100 d-flex flex-column gap-3 pb-3"">
-                <a data-bs-toggle="collapse" href="#q2">
+                <button class="btn p-0 text-start" data-bs-toggle="collapse" data-bs-target="#q2" aria-expanded="false" aria-controls="q2">
                     Dari mana resep tersebut berasal?
-                </a>
+                </button>
                 <div id="q2" class="collapse" data-bs-parent="#faq">
                   <p>
                     Resep dihasilkan secara otomatis oleh 
@@ -44,9 +44,9 @@ class FaqSection {
                 </div>
               </div>
               <div class="border-bottom w-100 d-flex flex-column gap-3 pb-3"">
-                <a data-bs-toggle="collapse" href="#q3">
+                <button class="btn p-0 text-start" data-bs-toggle="collapse" data-bs-target="#q3" aria-expanded="false" aria-controls="q3">
                   Kenapa hasil klasifikasi kadang salah?
-                </a>
+                </button>
                 <div id="q3" class="collapse" data-bs-parent="#faq">
                   <p>
                     Akurasi tergantung pada pencahayaan dan sudut pengambilan foto. Pastikan makanan terlihat jelas dan berada di tengah frame untuk hasil terbaik.
