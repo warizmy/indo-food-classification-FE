@@ -32,6 +32,7 @@ Backend (separate repository):
 - Flask (Python)
 - CNN-based food classification model (MobileNetV2)
 - Large Language Model for recipe generation
+- You can access the Backend repository [here](https://github.com/warizmy/indo-food-classification-BE).
 
 ---
 
@@ -108,6 +109,3 @@ Ensure that `manifest.json` and `service-worker.js` are properly registered.
 - Backend-based history persistence
 - Image storage using cloud services
 - Multi-language support
-
-## BackEnd Repository
-Repo : https://github.com/warizmy/indo-food-classification-BE
