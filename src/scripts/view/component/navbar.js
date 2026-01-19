@@ -29,7 +29,7 @@ class Navbar {
               <a class="nav-link" href="#/riwayat">Riwayat</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#/tentangai">Tentang AI</a>
+              <a class="nav-link" href="#/tentang">Tentang</a>
             </li>
           </ul>
         </div>

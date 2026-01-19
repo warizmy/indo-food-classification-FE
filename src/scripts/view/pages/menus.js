@@ -13,7 +13,7 @@ class Menu {
                <div class="menu-image-wrapper position-relative">
                     <img
                          src="${imageSrc}"
-                         class="img-menu"
+                         class="img-menu lazyload"
                          alt="${menu.name}"
                     />
                     <div class="category-tag category-${categoryClass}">
@@ -35,7 +35,7 @@ class Menu {
         <div class="d-flex flex-column justify-content-center">
           <h2 class="fw-semibold">Menu Terdaftar</h2>
           <small class="text-secondary">
-            AI kami dilatih khusus untuk mengenali 13 hidangan autentik Indonesia berikut ini.
+            AI kami dilatih khusus untuk mengenali hidangan-hidangan autentik Indonesia berikut ini.
           </small>
 
           <div class="py-5">

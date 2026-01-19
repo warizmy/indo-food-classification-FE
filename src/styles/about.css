@@ -10,6 +10,13 @@ section .container {
   gap: 2em;
 }
 
+.card-container .card-about {
+  border-bottom: 3px solid #ffa559;
+  border-top: 1px solid #dee2e6;
+  border-left: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
+}
+
 .container .flow-container {
   display: flex;
   flex-direction: row;

@@ -1,5 +1,6 @@
 import Api from '../../utils/api';
 import HistoryStorage from '../../utils/historyStorage';
+import LoadingCircle from '../../utils/loading';
 
 class CekMakanan {
   _render() {
@@ -7,16 +8,91 @@ class CekMakanan {
 
     section.innerHTML = `
       <div class="container py-5 mt-5">
-        <h2 class="fw-semibold">Cek Makanan</h2>
+        <div class="row justify-content-center">
+          <!-- LEFT -->
+          <div class="col-lg-5 mb-4">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
+              <div class="card-header bg-white border-0 pt-4 px-4">
+                <h5 class="fw-bold mb-0">Identifikasi Makanan</h5>
+                <p class="text-muted small">
+                  Unggah foto makanan Indonesia Anda
+                </p>
+              </div>
 
-        <input type="file" id="imageInput" accept="image/*" />
-        <img id="previewImage" class="d-none mt-3" />
+              <div class="card-body px-4 pb-4">
+                <div
+                  id="dropZone"
+                  class="upload-area border border-2 border-dashed rounded-4 p-4 text-center bg-light mb-3"
+                >
+                  <input type="file" id="imageInput" accept="image/*" hidden />
 
-        <button id="analyzeBtn" class="btn btn-warning mt-3">
-          Analisis Makanan
-        </button>
+                  <div id="uploadPlaceholder">
+                    <i class="bi bi-cloud-arrow-up text-warning display-4"></i>
+                    <p class="mt-2 mb-1 fw-bold">
+                      Klik atau tarik gambar ke sini
+                    </p>
+                    <span class="text-muted small">
+                      Mendukung: JPG, PNG, WEBP
+                    </span>
+                  </div>
 
-        <div id="result" class="mt-5"></div>
+                  <img
+                    id="imagePreview"
+                    class="img-fluid rounded-3 d-none shadow-sm"
+                    alt="Preview"
+                  />
+                </div>
+
+                <button
+                  id="btnPredict"
+                  class="btn btn-warning w-100 py-2 fw-bold rounded-pill shadow-sm"
+                >
+                  <span id="btnText">Analisis Sekarang</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7 mb-4">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+              <div class="card-body p-4 p-md-5">
+                <div id="placeholderText" class="text-center py-5">
+                  <div class="mb-3 text-muted opacity-25">
+                    <i class="bi bi-journal-text" style="font-size: 5rem"></i>
+                  </div>
+                  <h5 class="text-muted">
+                    Hasil resep akan muncul di sini
+                  </h5>
+                  <p class="small text-muted px-lg-5">
+                    Pastikan foto makanan terlihat jelas agar AI dapat memberikan
+                    resep yang akurat.
+                  </p>
+                </div>
+
+                <div id="resultContent" class="d-none">
+                  <div class="d-flex align-items-center mb-4 pb-3 border-bottom">
+                    <div class="flex-grow-1">
+                      <h6 class="text-success fw-bold text-uppercase small mb-1">
+                        Hasil Deteksi
+                      </h6>
+                      <h3 id="resFoodName" class="fw-bold mb-0">-</h3>
+                    </div>
+                  </div>
+
+                  <div
+                    class="recipe-container bg-light rounded-4 p-4 shadow-inner"
+                    style="max-height: 500px; overflow-y: auto"
+                  >
+                    <div
+                      id="resRecipe"
+                      class="recipe-content text-secondary fs-6 lh-lg"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     `;
 
@@ -24,33 +100,51 @@ class CekMakanan {
   }
 
   _initializeEvent() {
+    const loadingCircle = new LoadingCircle();
+    const dropZone = document.getElementById('dropZone');
     const imageInput = document.getElementById('imageInput');
-    const preview = document.getElementById('previewImage');
-    const analyzeBtn = document.getElementById('analyzeBtn');
-    const result = document.getElementById('result');
+    const preview = document.getElementById('imagePreview');
+    const uploadPlaceholder = document.getElementById('uploadPlaceholder');
+
+    const btnPredict = document.getElementById('btnPredict');
+    // const loader = document.getElementById('loader');
+    // const btnText = document.getElementById('btnText');
+
+    const placeholderText = document.getElementById('placeholderText');
+    const resultContent = document.getElementById('resultContent');
+    const resFoodName = document.getElementById('resFoodName');
+    const resRecipe = document.getElementById('resRecipe');
 
     let selectedFile = null;
 
+    // CLICK DROP ZONE
+    dropZone.addEventListener('click', () => {
+      imageInput.click();
+    });
+
+    // FILE SELECT
     imageInput.addEventListener('change', (e) => {
       selectedFile = e.target.files[0];
       if (!selectedFile) return;
 
       preview.src = URL.createObjectURL(selectedFile);
       preview.classList.remove('d-none');
+      uploadPlaceholder.classList.add('d-none');
     });
 
-    analyzeBtn.addEventListener('click', async () => {
+    // PREDICT
+    btnPredict.addEventListener('click', async () => {
       if (!selectedFile) {
-        alert('Pilih gambar dulu');
+        alert('Pilih gambar terlebih dahulu');
         return;
       }
 
-      result.innerHTML = '<p>Loading...</p>';
+      loadingCircle.show();
+      btnPredict.disabled = true;
 
       try {
         const response = await Api.predictFood(selectedFile);
 
-        // Save to LocalStorage
         HistoryStorage.save({
           id: Date.now().toString(),
           foodName: response.food_name,
@@ -59,14 +153,16 @@ class CekMakanan {
           createdAt: new Date().toISOString(),
         });
 
-        result.innerHTML = `
-          <h4>${response.food_name}</h4>
-          <p>Confidence: ${(response.confidence * 100).toFixed(2)}%</p>
-          <img src="${response.image_url}" width="200" />
-          <pre>${response.recipe}</pre>
-        `;
+        placeholderText.classList.add('d-none');
+        resultContent.classList.remove('d-none');
+
+        resFoodName.textContent = response.food_name;
+        resRecipe.innerHTML = marked.parse(response.recipe);
       } catch (error) {
-        result.innerHTML = `<p class="text-danger">${error.message}</p>`;
+        alert(error.message || 'Terjadi kesalahan');
+      } finally {
+        loadingCircle.hide();
+        btnPredict.disabled = false;
       }
     });
   }

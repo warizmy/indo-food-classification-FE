@@ -7,7 +7,7 @@ class HistoryMenus {
         <img 
           src="${item.imageUrl}" 
           alt="${item.foodName}" 
-          class="history-img"
+          class="history-img lazyload"
         />
         <div>
           <h6 class="fw-bold mb-1">${item.foodName}</h6>

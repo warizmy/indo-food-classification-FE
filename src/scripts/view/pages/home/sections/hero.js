@@ -13,7 +13,7 @@ class HeroSection {
                     Teknologi AI yang membantu Anda mengidentifikasi hidangan nusantara
                </p>
                <div class="d-flex gap-3 justify-content-center">
-                    <a href="#/tentangai" class="btn btn-light text-black">Pelajari Lebih Lanjut</a>
+                    <a href="#/tentang" class="btn btn-light text-black">Pelajari Lebih Lanjut</a>
                     <a href="#/cekmakanan" class="btn btn-warning">Mulai Cek Makanan</a>
                </div>
           </div>

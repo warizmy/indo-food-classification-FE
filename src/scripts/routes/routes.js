@@ -6,7 +6,7 @@ import Menu from '../view/pages/menus';
 
 const routes = {
   '/': Home,
-  '/tentangai': About,
+  '/tentang': About,
   '/daftarmenu': Menu,
   '/cekmakanan': CekMakanan,
   '/riwayat': HistoryMenus,
