@@ -42,6 +42,7 @@ class Navbar {
     const navbar = document.querySelector('.navbar');
     const navbarToggler = document.querySelector('.navbar-toggler');
     const navbarCollapse = document.querySelector('.navbar-collapse');
+    const navLinks = document.querySelectorAll('.nav-link');
 
     document.addEventListener('click', (event) => {
       if (!navbar.contains(event.target) && navbarCollapse.classList.contains('active')) {
@@ -52,6 +53,16 @@ class Navbar {
     navbarToggler.addEventListener('click', (event) => {
       navbarCollapse.classList.toggle('active');
       event.stopPropagation();
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        navbarCollapse.classList.remove('active');
+      });
+    });
+
+    window.addEventListener('hashchange', () => {
+      navbarCollapse.classList.remove('active');
     });
   }
 
