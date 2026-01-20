@@ -1,6 +1,6 @@
-import uploadIcon from '../../../../../assets/images/upload.svg';
-import aiTechIcon from '../../../../../assets/images/ai-technology.svg';
-import recipeIcon from '../../../../../assets/images/recipe-book.svg';
+import uploadIcon from '../../../../../public/images/upload.svg';
+import aiTechIcon from '../../../../../public/images/ai-technology.svg';
+import recipeIcon from '../../../../../public/images/recipe-book.svg';
 
 class HowItWorksSection {
   render() {

@@ -14,18 +14,23 @@ const app = new Main({
 
 const loadingBar = new LoadingCircle();
 
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
   if (!window.location.hash) {
     window.location.hash = '#/';
   }
 
   loadingBar.show();
 
-  setTimeout(() => {
-    app.renderPage();
-    setActiveNavbar();
-    loadingBar.hide();
-  }, 500);
+  await app.renderPage();
+  setActiveNavbar();
+  loadingBar.hide();
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .register('/sw.js')
+      .then(() => console.log('SW registered'))
+      .catch((err) => console.error('SW failed:', err));
+  }
 });
 
 window.addEventListener('hashchange', async () => {

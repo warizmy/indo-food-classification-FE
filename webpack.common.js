@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 
 module.exports = {
   entry: {
@@ -51,13 +52,31 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, 'src/public/'),
-          to: path.resolve(__dirname, 'dist/'),
+          from: path.resolve(__dirname, 'src/public/sw.js'),
+          to: path.resolve(__dirname, 'dist/sw.js'),
         },
       ],
     }),
     new MiniCssExtractPlugin({
       filename: 'styles/[name].[contenthash].css',
     }),
+    new WebpackPwaManifest({
+      name: 'IndoFood AI',
+      short_name: 'IndoFood.ai',
+      description: 'AI-based Indonesian Food Classification',
+      start_url: './#/',
+      display: 'standalone',
+      background_color: '#ffffff',
+      theme_color: '#f4b400',
+      publicPath: '/',
+      icons: [
+        {
+          src: path.resolve(__dirname, 'src/public/logo.svg'),
+          sizes: [192, 512],
+          destination: 'icons',
+        },
+      ],
+    }),
+
   ],
 };
