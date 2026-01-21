@@ -46,7 +46,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/templates/index.html'),
-      favicon: path.resolve(__dirname, 'src/public/logo.svg'),
+      favicon: path.resolve(__dirname, 'src/public/logo.png'),
       inject: 'body',
     }),
     new CopyWebpackPlugin({
@@ -61,22 +61,37 @@ module.exports = {
       filename: 'styles/[name].[contenthash].css',
     }),
     new WebpackPwaManifest({
+      filename: 'manifest.json',
       name: 'IndoFood AI',
       short_name: 'IndoFood.ai',
       description: 'AI-based Indonesian Food Classification',
-      start_url: './#/',
+      start_url: '/#/',
       display: 'standalone',
       background_color: '#ffffff',
       theme_color: '#f4b400',
       publicPath: '/',
       icons: [
         {
-          src: path.resolve(__dirname, 'src/public/logo.svg'),
+          src: path.resolve(__dirname, 'src/public/logo.png'),
           sizes: [192, 512],
           destination: 'icons',
+          purpose: 'any maskable',
+        },
+      ],
+      screenshots: [
+        {
+          src: path.resolve(__dirname, 'src/public/screenshots/desktop.png'),
+          sizes: '1280x720',
+          type: 'image/png',
+          form_factor: 'wide',
+        },
+        {
+          src: path.resolve(__dirname, 'src/public/screenshots/mobile.png'),
+          sizes: '540x720',
+          type: 'image/png',
+          form_factor: 'narrow',
         },
       ],
     }),
-
   ],
 };
