@@ -75,7 +75,7 @@
 .lazyloaded {
   opacity: 1;
 }
-/* Overlay untuk nge-blur background */
+
 .popup-overlay {
   position: fixed;
   inset: 0;
@@ -95,7 +95,6 @@
   visibility: visible;
 }
 
-/* Box Pop-up */
 .popup-box {
   background: white;
   padding: 2.5rem;

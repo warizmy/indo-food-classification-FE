@@ -127,7 +127,7 @@ class CekMakanan {
       imageInput.click();
     });
 
-    // FILE SELECT
+    // File Select
     imageInput.addEventListener('change', (e) => {
       selectedFile = e.target.files[0];
       if (!selectedFile) return;
@@ -137,7 +137,7 @@ class CekMakanan {
       uploadPlaceholder.classList.add('d-none');
     });
 
-    // PREDICT
+    // Predict
     btnPredict.addEventListener('click', async () => {
       if (!selectedFile) {
         await popUp.show('Pilih Gambar Terlebih Dahulu!');

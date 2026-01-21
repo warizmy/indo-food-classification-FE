@@ -32,8 +32,8 @@ class Popup {
   }
 
   /**
-   * @param {string} message - Pesan yang muncul
-   * @param {boolean} isConfirm - Jika true muncul 2 tombol, jika false cuma 1 (alert)
+   * @param {string} message
+   * @param {boolean} isConfirm
    */
   show(message, isConfirm = false) {
     this.msgEl.textContent = message;
