@@ -75,6 +75,37 @@
 .lazyloaded {
   opacity: 1;
 }
+/* CSS untuk Pop-up Global */
+.popup-box {
+  position: fixed;
+  top: -100px; /* Sembunyi di atas layar */
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  min-width: 300px;
+  border-bottom: 4px solid #ffa559;
+}
+
+.popup-box.active {
+  top: 30px; /* Muncul ke bawah */
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.popup-message {
+  font-weight: 600;
+  color: #444;
+}
 
 @keyframes spin {
   0% {
