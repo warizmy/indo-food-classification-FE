@@ -1,5 +1,6 @@
 import HistoryStorage from '../../utils/historyStorage';
 import LoadingCircle from '../../utils/loading';
+import Popup from '../../utils/popUp';
 
 class HistoryMenus {
   _renderHistoryItems(histories) {
@@ -56,11 +57,12 @@ class HistoryMenus {
 
   _initializeEvent() {
     const loading = new LoadingCircle();
+    const popUp = new Popup();
     const clearBtn = document.getElementById('clearHistory');
     if (!clearBtn) return;
 
-    clearBtn.addEventListener('click', () => {
-      if (confirm('Yakin ingin menghapus semua riwayat?')) {
+    clearBtn.addEventListener('click', async () => {
+      if (await popUp.show('Yakin ingin menghapus semua riwayat?', true)) {
         loading.show();
         setTimeout(() => {
           try {
@@ -69,7 +71,7 @@ class HistoryMenus {
             window.location.reload();
           } catch (error) {
             loading.hide();
-            alert('Gagal menghapus riwayat');
+            popUp.show('Gagal menghapus riwayat');
           }
         }, 500);
       }

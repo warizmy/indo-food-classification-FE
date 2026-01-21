@@ -1,6 +1,7 @@
 import AnalysisLoader from '../../utils/analysisLoader';
 import Api from '../../utils/api';
 import HistoryStorage from '../../utils/historyStorage';
+import Popup from '../../utils/popUp';
 
 class CekMakanan {
   _render() {
@@ -106,6 +107,8 @@ class CekMakanan {
 
   _initializeEvent() {
     const loader = new AnalysisLoader('#analysisLoader');
+    const popUp = new Popup();
+
     const dropZone = document.getElementById('dropZone');
     const imageInput = document.getElementById('imageInput');
     const preview = document.getElementById('imagePreview');
@@ -137,7 +140,7 @@ class CekMakanan {
     // PREDICT
     btnPredict.addEventListener('click', async () => {
       if (!selectedFile) {
-        alert('Pilih gambar terlebih dahulu');
+        await popUp.show('Pilih Gambar Terlebih Dahulu!');
         return;
       }
 
