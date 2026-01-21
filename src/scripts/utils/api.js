@@ -1,11 +1,11 @@
-const API_BASE_URL = 'https://indo-food-classification-be-production.up.railway.app';
+const BASE_URL = process.env.API_BASE_URL;
 
 const Api = {
   async predictFood(imageFile) {
     const formData = new FormData();
     formData.append('file', imageFile);
 
-    const response = await fetch(`${API_BASE_URL}/predict`, {
+    const response = await fetch(`${BASE_URL}/predict`, {
       method: 'POST',
       body: formData,
     });
