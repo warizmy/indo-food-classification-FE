@@ -24,19 +24,23 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  const { request } = event;
+  const req = event.request;
 
-  if (request.method !== 'GET') return;
+  if (
+    req.method !== 'GET'
+    || !req.url.startsWith(self.location.origin)
+  ) {
+    return;
+  }
 
   event.respondWith(
-    fetch(request)
-      .then((response) => {
-        const clone = response.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(request, clone);
-        });
-        return response;
-      })
-      .catch(() => caches.match(request)),
+    caches.match(req).then((cached) => {
+      if (cached) return cached;
+
+      return fetch(req).then((res) => caches.open('indoffod-v1').then((cache) => {
+        cache.put(req, res.clone());
+        return res;
+      }));
+    }),
   );
 });

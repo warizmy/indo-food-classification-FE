@@ -27,9 +27,7 @@ window.addEventListener('load', async () => {
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker
-      .register('/sw.js')
-      .then(() => console.log('SW registered'))
-      .catch((err) => console.error('SW failed:', err));
+      .register('/sw.js');
   }
 });
 

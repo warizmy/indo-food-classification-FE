@@ -52,8 +52,8 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, 'src/public/sw.js'),
-          to: path.resolve(__dirname, 'dist/sw.js'),
+          from: path.resolve(__dirname, 'src/public'),
+          to: path.resolve(__dirname, 'dist'),
         },
       ],
     }),
@@ -80,13 +80,13 @@ module.exports = {
       ],
       screenshots: [
         {
-          src: path.resolve(__dirname, 'src/public/screenshots/desktop.png'),
+          src: 'screenshots/desktop.png',
           sizes: '1280x720',
           type: 'image/png',
           form_factor: 'wide',
         },
         {
-          src: path.resolve(__dirname, 'src/public/screenshots/mobile.png'),
+          src: 'screenshots/mobile.png',
           sizes: '540x720',
           type: 'image/png',
           form_factor: 'narrow',
