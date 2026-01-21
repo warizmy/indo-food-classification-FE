@@ -38,7 +38,6 @@ Backend (separate repository):
 4. The predicted food name is passed to an LLM to generate a recipe.
 5. The frontend renders:
    - Food name
-   - Confidence score
    - Generated recipe content
 
 ---
