@@ -9,7 +9,6 @@ class CekMakanan {
     section.innerHTML = `
       <div class="container py-5 mt-5">
         <div class="row justify-content-center">
-          <!-- LEFT -->
           <div class="col-lg-5 mb-4">
             <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
               <div class="card-header bg-white border-0 pt-4 px-4">
@@ -121,7 +120,6 @@ class CekMakanan {
 
     let selectedFile = null;
 
-    // CLICK DROP ZONE
     dropZone.addEventListener('click', () => {
       imageInput.click();
     });

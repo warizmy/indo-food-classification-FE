@@ -1,4 +1,5 @@
 import HistoryStorage from '../../utils/historyStorage';
+import LoadingCircle from '../../utils/loading';
 
 class HistoryMenus {
   _renderHistoryItems(histories) {
@@ -35,15 +36,13 @@ class HistoryMenus {
         </small>
 
         <div class="mt-4 d-flex flex-column gap-3">
-          ${
-  histories.length
+          ${histories.length
     ? this._renderHistoryItems(histories)
     : '<p class="text-muted">Belum ada riwayat klasifikasi.</p>'
 }
         </div>
 
-        ${
-  histories.length
+        ${histories.length
     ? `<button id="clearHistory" class="btn btn-outline-danger mt-4">
                 Hapus Riwayat
               </button>`
@@ -56,13 +55,23 @@ class HistoryMenus {
   }
 
   _initializeEvent() {
+    const loading = new LoadingCircle();
     const clearBtn = document.getElementById('clearHistory');
     if (!clearBtn) return;
 
     clearBtn.addEventListener('click', () => {
       if (confirm('Yakin ingin menghapus semua riwayat?')) {
-        HistoryStorage.clear();
-        window.location.reload();
+        loading.show();
+        setTimeout(() => {
+          try {
+            HistoryStorage.clear();
+
+            window.location.reload();
+          } catch (error) {
+            loading.hide();
+            alert('Gagal menghapus riwayat');
+          }
+        }, 500);
       }
     });
   }
