@@ -8,15 +8,11 @@ The frontend is built using Vanilla JavaScript with a modular structure and is d
 
 ## Features
 
-- Image upload for Indonesian food classification
-- Image preview before analysis
 - Integration with a RESTful backend API
 - Display of classification results and confidence score
 - AI-generated recipe rendering
 - Fully responsive user interface
 - Progressive Web App (PWA) support
-- Global loading indicator
-- Local storage-based history management
 
 ---
 
@@ -24,8 +20,6 @@ The frontend is built using Vanilla JavaScript with a modular structure and is d
 
 Frontend:
 - Vanilla JavaScript (ES6+)
-- HTML5
-- CSS3
 - Bootstrap 5
 
 Backend (separate repository):
