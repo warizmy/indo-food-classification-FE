@@ -44,3 +44,7 @@
   background: #dee2e6;
   border-radius: 10px;
 }
+
+.card.position-relative {
+  scroll-margin-top: 100px;
+}

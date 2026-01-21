@@ -1,6 +1,6 @@
+import AnalysisLoader from '../../utils/analysisLoader';
 import Api from '../../utils/api';
 import HistoryStorage from '../../utils/historyStorage';
-import LoadingCircle from '../../utils/loading';
 
 class CekMakanan {
   _render() {
@@ -55,6 +55,12 @@ class CekMakanan {
 
           <div class="col-lg-7 mb-4">
             <div class="card border-0 shadow-sm rounded-4 h-100">
+              <div id="analysisLoader" class="analysis-loader">
+                <div class="text-center">
+                  <div class="analysis-spinner mx-auto mb-2"></div>
+                  <p class="small fw-bold text-muted">Menganalisis...</p>
+                </div>
+              </div>
               <div class="card-body p-4 p-md-5">
                 <div id="placeholderText" class="text-center py-5">
                   <div class="mb-3 text-muted opacity-25">
@@ -100,15 +106,13 @@ class CekMakanan {
   }
 
   _initializeEvent() {
-    const loadingCircle = new LoadingCircle();
+    const loader = new AnalysisLoader('#analysisLoader');
     const dropZone = document.getElementById('dropZone');
     const imageInput = document.getElementById('imageInput');
     const preview = document.getElementById('imagePreview');
     const uploadPlaceholder = document.getElementById('uploadPlaceholder');
 
     const btnPredict = document.getElementById('btnPredict');
-    // const loader = document.getElementById('loader');
-    // const btnText = document.getElementById('btnText');
 
     const placeholderText = document.getElementById('placeholderText');
     const resultContent = document.getElementById('resultContent');
@@ -139,8 +143,11 @@ class CekMakanan {
         return;
       }
 
-      loadingCircle.show();
+      loader.show();
       btnPredict.disabled = true;
+
+      const resultCard = document.getElementById('analysisLoader').parentElement;
+      resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
       try {
         const response = await Api.predictFood(selectedFile);
@@ -161,7 +168,7 @@ class CekMakanan {
       } catch (error) {
         alert(error.message || 'Terjadi kesalahan');
       } finally {
-        loadingCircle.hide();
+        loader.hide();
         btnPredict.disabled = false;
       }
     });

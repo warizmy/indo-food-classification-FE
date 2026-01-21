@@ -7,7 +7,6 @@
 @import "historyMenus.css";
 @import "classification.css";
 
-
 * {
   margin: 0;
   padding: 0;
@@ -42,6 +41,30 @@
   border: 10px solid #ffa559;
   border-radius: 50%;
   border-top: 10px solid #fff;
+  animation: spin 1s linear infinite;
+}
+
+.analysis-loader {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  z-index: 10;
+}
+
+.analysis-loader.active {
+  display: flex;
+}
+
+.analysis-spinner {
+  width: 40px;
+  height: 40px;
+  border: 6px solid #ffe0b2;
+  border-top: 6px solid #ffa559;
+  border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
