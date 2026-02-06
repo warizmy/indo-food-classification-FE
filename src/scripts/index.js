@@ -25,10 +25,10 @@ window.addEventListener('load', async () => {
   setActiveNavbar();
   loadingBar.hide();
 
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-      .register('/sw.js');
-  }
+  // if ('serviceWorker' in navigator) {
+  //   navigator.serviceWorker
+  //     .register('/sw.js');
+  // }
 });
 
 window.addEventListener('hashchange', async () => {
