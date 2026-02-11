@@ -4,6 +4,11 @@ import HistoryStorage from '../../utils/historyStorage';
 import Popup from '../../utils/popUp';
 
 class CekMakanan {
+  constructor() {
+    this._abortController = new AbortController();
+    this._previewUrl = null;
+  }
+
   _render() {
     const section = document.createElement('section');
 
@@ -132,7 +137,13 @@ class CekMakanan {
       selectedFile = e.target.files[0];
       if (!selectedFile) return;
 
-      preview.src = URL.createObjectURL(selectedFile);
+      if (this._previewUrl) {
+        URL.revokeObjectURL(this._previewUrl);
+      }
+
+      this._previewUrl = URL.createObjectURL(selectedFile);
+
+      preview.src = this._previewUrl;
       preview.classList.remove('d-none');
       uploadPlaceholder.classList.add('d-none');
     });
@@ -151,7 +162,9 @@ class CekMakanan {
       resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
       try {
-        const response = await Api.predictFood(selectedFile);
+        const response = await Api.predictFood(selectedFile, {
+          signal: this._abortController.signal,
+        });
 
         HistoryStorage.save({
           id: Date.now().toString(),
@@ -167,12 +180,25 @@ class CekMakanan {
         resFoodName.textContent = response.food_name;
         resRecipe.innerHTML = marked.parse(response.recipe);
       } catch (error) {
+        if (error.name === 'AbortError') {
+          console.log('Fetch dibatalkan karena pindah page.');
+          return;
+        }
         alert(error.message || 'Terjadi kesalahan');
       } finally {
         loader.hide();
         btnPredict.disabled = false;
       }
     });
+  }
+
+  _destroy() {
+    this._abortController.abort(); // TOTALLY KILL THE REQUEST
+
+    if (this._previewUrl) {
+      URL.revokeObjectURL(this._previewUrl);
+      this._previewUrl = null;
+    }
   }
 }
 

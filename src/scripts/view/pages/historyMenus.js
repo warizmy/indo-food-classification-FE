@@ -1,6 +1,5 @@
 import HistoryStorage from '../../utils/historyStorage';
 import Popup from '../../utils/popUp';
-import ProgressBar from '../../utils/progressBar';
 
 class HistoryMenus {
   _renderHistoryItems(histories) {
@@ -56,26 +55,25 @@ class HistoryMenus {
   }
 
   _initializeEvent() {
-    const progressBar = new ProgressBar();
     const popUp = new Popup();
     const clearBtn = document.getElementById('clearHistory');
     if (!clearBtn) return;
 
-    clearBtn.addEventListener('click', async () => {
-      if (await popUp.show('Yakin ingin menghapus semua riwayat?', true)) {
-        progressBar.start();
-        setTimeout(() => {
-          try {
-            HistoryStorage.clear();
-
-            window.location.reload();
-          } catch (error) {
-            progressBar.finish();
-            popUp.show('Gagal menghapus riwayat');
-          }
-        }, 500);
+    this._clearHandler = async () => {
+      if (await popUp.show('Yakin ingin hapus?', true)) {
+        HistoryStorage.clear();
+        window.dispatchEvent(new HashChangeEvent('hashchange'));
       }
-    });
+    };
+
+    clearBtn.addEventListener('click', this._clearHandler);
+  }
+
+  _destroy() {
+    const clearBtn = document.getElementById('clearHistory');
+    if (clearBtn) {
+      clearBtn.removeEventListener('click', this._clearHandler);
+    }
   }
 }
 

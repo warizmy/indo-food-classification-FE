@@ -8,6 +8,7 @@ class Main {
     this._content = content;
     this._loadingContainer = loadingContainer;
     this._mainContentWrapper = mainContentWrapper;
+    this._activePage = null;
 
     this.InitialAppShell();
   }
@@ -30,33 +31,32 @@ class Main {
   }
 
   async renderPage() {
+    if (this._activePage && typeof this._activePage._destroy === 'function') {
+      this._activePage._destroy();
+    }
+
     const url = UrlParser.parseActiveUrlWithCombiner();
     const Page = routes[url];
 
     if (Page) {
-      const page = new Page();
+      this._activePage = new Page();
 
-      // 1. Reset konten dan siapkan container dengan state awal (transparan)
       this._content.innerHTML = '';
       this._content.classList.remove('active');
       this._content.classList.add('page-transition');
 
-      // 2. Render content
-      const renderedContent = await page._render();
+      const renderedContent = await this._activePage._render();
       this._content.appendChild(renderedContent);
 
-      // 3. Trigger animasi di frame berikutnya supaya transisi terbaca oleh browser
       requestAnimationFrame(() => {
-        setTimeout(() => {
-          this._content.classList.add('active');
-        }, 50); // Delay tipis biar sinkron sama progress bar
+        setTimeout(() => { this._content.classList.add('active'); }, 50);
       });
 
-      if (typeof page._initializeEvent === 'function') {
-        page._initializeEvent();
+      if (typeof this._activePage._initializeEvent === 'function') {
+        this._activePage._initializeEvent();
       }
     } else {
-      this._content.innerHTML = '<h1 class="text-center mt-5">404 - Halaman Tidak Ditemukan</h1>';
+      this._content.innerHTML = '<h1 class="text-center mt-5">404</h1>';
     }
   }
 }
