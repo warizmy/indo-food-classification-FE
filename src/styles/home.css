@@ -18,6 +18,14 @@
   color: #fff;
 }
 
+.hero-btn:hover{
+  filter: brightness(96%);
+}
+
+.hero-btn svg{
+  height: 20px;
+}
+
 .section-1 {
   width: 70%;
 }
