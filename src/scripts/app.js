@@ -35,13 +35,28 @@ class Main {
 
     if (Page) {
       const page = new Page();
+
+      // 1. Reset konten dan siapkan container dengan state awal (transparan)
       this._content.innerHTML = '';
-      this._content.appendChild(await page._render());
+      this._content.classList.remove('active');
+      this._content.classList.add('page-transition');
+
+      // 2. Render content
+      const renderedContent = await page._render();
+      this._content.appendChild(renderedContent);
+
+      // 3. Trigger animasi di frame berikutnya supaya transisi terbaca oleh browser
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          this._content.classList.add('active');
+        }, 50); // Delay tipis biar sinkron sama progress bar
+      });
+
       if (typeof page._initializeEvent === 'function') {
         page._initializeEvent();
       }
     } else {
-      this._content.innerHTML = '<h1>404 - Halaman Tidak Ditemukan</h1>';
+      this._content.innerHTML = '<h1 class="text-center mt-5">404 - Halaman Tidak Ditemukan</h1>';
     }
   }
 }
