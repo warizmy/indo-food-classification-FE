@@ -22,7 +22,6 @@ class ProgressBar {
     this._barElement.style.opacity = '1';
     this._barElement.style.width = '0%';
 
-    // Trickle effect: Maju perlahan sampai 90%
     if (this._timer) clearInterval(this._timer);
 
     this._timer = setInterval(() => {
