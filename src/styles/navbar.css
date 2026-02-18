@@ -39,10 +39,13 @@
   font-weight: 400;
   font-size: 0.9rem;
   color: #000;
+  transition: color 0.25s ease;
 }
 
-.nav-link:hover {
-  color: #ffa559;
+.nav-link:hover,
+.nav-link.active,
+.nav-link[aria-current="page"] {
+  color: #ffa559 !important;
 }
 
 @media (min-width: 600px) and (max-width: 1080px) {
