@@ -37,7 +37,7 @@ self.addEventListener('fetch', (event) => {
     caches.match(req).then((cached) => {
       if (cached) return cached;
 
-      return fetch(req).then((res) => caches.open('indoffod-v1').then((cache) => {
+      return fetch(req).then((res) => caches.open('indofood-v1').then((cache) => {
         cache.put(req, res.clone());
         return res;
       }));
